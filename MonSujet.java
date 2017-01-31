@@ -1,3 +1,4 @@
+package rpn;
 /**
  * Inteface du sujet observé
  * @author Vincent Lacasse

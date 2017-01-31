@@ -1,3 +1,4 @@
+package rpn;
 import java.util.Locale;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,7 +175,7 @@ public class RPN implements MonSujet {
 	/**
 	 * Convertir affiche en double.
 	 * Si affiche contient ".", on convertit en 0.0
-	 * @return
+	 * @return la valeur de affiche en double
 	 */
 	private double convertirAffiche() {
 		if (affiche.equals(".")) 

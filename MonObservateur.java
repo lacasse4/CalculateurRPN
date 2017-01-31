@@ -1,3 +1,4 @@
+package rpn;
 /**
  * Interfade de l'observateur
  * @author Vincent Lacasse

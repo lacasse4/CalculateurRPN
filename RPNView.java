@@ -1,3 +1,4 @@
+package rpn;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
@@ -16,18 +17,18 @@ import java.awt.event.ActionListener;
  *
  */
 
-public class RPNView implements MonObservateur {
+public class RPNView extends JFrame implements MonObservateur {
 
-	private JFrame frame;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JPanel panel;
+	private JPanel buttonPanel;
 	private RPN rpn;
 
 	/**
 	 * Create the frame.
 	 */
 	public RPNView(RPN rpn) {
+		super("Calculateur RPN");
 		this.rpn = rpn;
 		
 		contentPane = new JPanel();
@@ -49,22 +50,22 @@ public class RPNView implements MonObservateur {
     	textField.setText(rpn.getAffiche());
 		contentPane.add(textField, BorderLayout.NORTH);
 		
-		panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(4, 4, 2, 2));
+		buttonPanel = new JPanel();
+		contentPane.add(buttonPanel, BorderLayout.CENTER);
+		buttonPanel.setLayout(new GridLayout(4, 4, 2, 2));
 		
 		JButton button;
 		button = new JButton("7");
 		button.addActionListener(getDigitActionListener("7"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("8");
 		button.addActionListener(getDigitActionListener("8"));
-		panel.add(button);
+		buttonPanel.add(button);
 
 		button = new JButton("9");
 		button.addActionListener(getDigitActionListener("9"));
-		panel.add(button);
+		buttonPanel.add(button);
 
 		button = new JButton("/");
 		button.addActionListener(new ActionListener() {
@@ -72,19 +73,19 @@ public class RPNView implements MonObservateur {
 		    		rpn.compute(RPN.OPERATION.DIV);
 		    	}
 			});
-		panel.add(button);
+		buttonPanel.add(button);
 
 		button = new JButton("4");
 		button.addActionListener(getDigitActionListener("4"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("5");
 		button.addActionListener(getDigitActionListener("5"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("6");
 		button.addActionListener(getDigitActionListener("6"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("x");
 		button.addActionListener(new ActionListener() {
@@ -92,19 +93,19 @@ public class RPNView implements MonObservateur {
 		    		rpn.compute(RPN.OPERATION.MUL);
 		    	}
 			});
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("1");
 		button.addActionListener(getDigitActionListener("1"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("2");
 		button.addActionListener(getDigitActionListener("2"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("3");
 		button.addActionListener(getDigitActionListener("3"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("-");
 		button.addActionListener(new ActionListener() {
@@ -112,15 +113,15 @@ public class RPNView implements MonObservateur {
 		    		rpn.compute(RPN.OPERATION.SUB);
 		    	}
 			});
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("0");
 		button.addActionListener(getDigitActionListener("0"));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton(".");
 		button.addActionListener(getDigitActionListener("."));
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("C");
 		button.addActionListener(new ActionListener() {
@@ -128,7 +129,7 @@ public class RPNView implements MonObservateur {
 		    		rpn.clear();
 		    	}
 			});
-		panel.add(button);
+		buttonPanel.add(button);
 		
 		button = new JButton("+");
 		button.addActionListener(new ActionListener() {
@@ -136,13 +137,13 @@ public class RPNView implements MonObservateur {
 		    		rpn.compute(RPN.OPERATION.ADD);
 		    	}
 			});
-		panel.add(button);
+		buttonPanel.add(button);
 		
-		frame = new JFrame("Calculateur RPN");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 450, 300);
-		frame.setContentPane(contentPane);
-		frame.setVisible(true);
+		// operation du JFrame 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		setContentPane(contentPane);
+		setVisible(true);
 	}
 
 	/**
